@@ -3,12 +3,15 @@
 
 #include <string>
 #include <iostream>
+#include "bitacora.h"
+
 using namespace std;
 
 class Vehiculo {
 private:
     string placa;
     string tipo;
+    Bitacora bitacora; // cada vehículo tiene su propia bitácora
 
 public:
     Vehiculo();
@@ -17,6 +20,11 @@ public:
     string getPlaca() const;
     string getTipo() const;
     void mostrarInfo() const;
+
+    // Métodos para la bitácora
+    void registrarEvento(const string& descripcion);
+    void mostrarBitacora() const;
+    
 };
 
 #endif

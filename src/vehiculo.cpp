@@ -16,3 +16,12 @@ string Vehiculo::getTipo() const {
 void Vehiculo::mostrarInfo() const {
     cout << "Vehículo [" << tipo << "] - Placa: " << placa << endl;
 }
+
+void Vehiculo::registrarEvento(const string& descripcion) {
+    bitacora.agregarEvento(descripcion);
+}
+
+void Vehiculo::mostrarBitacora() const {
+    cout << "Bitácora del vehículo " << placa << ":" << endl;
+    bitacora.mostrarEventos();
+}
