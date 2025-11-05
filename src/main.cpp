@@ -1,11 +1,11 @@
-#include "personaFisica.h"
+#include "personaJuridica.h"
 #include <iostream>
 
 int main() {
-    PersonaFisica p1("123456789", "Jimena Bejarano", "8888-8888", "L-4567CR");
+    PersonaJuridica empresa("3-101-456789", "AutoAlquiler S.A.", "2222-3333", "Carlos Mora");
 
-    cout << "Tipo de cliente: " << p1.tipoCliente() << endl;
-    p1.mostrarInfo();
+    cout << "Tipo de cliente: " << empresa.tipoCliente() << endl;
+    empresa.mostrarInfo();
 
     return 0;
 }

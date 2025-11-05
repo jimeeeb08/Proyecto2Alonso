@@ -22,7 +22,7 @@ public:
     string getNombre() const;
     string getTelefono() const;
 
-    // Métodos virtuales (para sobrescribir en las subclases), poliformismo
+    // Métodos virtuales (para sobrescribir en las subclases), heredados
     virtual string tipoCliente() const = 0;
     virtual void mostrarInfo() const;
 };
