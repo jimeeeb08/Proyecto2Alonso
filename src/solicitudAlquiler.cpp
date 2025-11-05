@@ -6,9 +6,9 @@ SolicitudAlquiler::SolicitudAlquiler()
       fechaInicio(""), fechaFin(""), estado("pendiente") {}
 
 SolicitudAlquiler::SolicitudAlquiler(int id, Cliente* cliente, Vehiculo* vehiculo,
-                                     const string& inicio, const string& fin)
+                                     const string& inicio, const string& fin, bool aprobada)
     : idSolicitud(id), cliente(cliente), vehiculo(vehiculo),
-      fechaInicio(inicio), fechaFin(fin), estado("pendiente") {}
+      fechaInicio(inicio), fechaFin(fin), estado("pendiente"), aprobada(false) {}
 
 SolicitudAlquiler::~SolicitudAlquiler() {}
 
@@ -30,4 +30,13 @@ void SolicitudAlquiler::mostrarInfo() const {
     cout << "Vehículo: " << vehiculo->getPlaca() << " - Tipo: " << vehiculo->getTipo() << endl;
     cout << "Fecha inicio: " << fechaInicio << " | Fecha fin: " << fechaFin << endl;
     cout << "Estado: " << estado << endl;
+}
+
+void SolicitudAlquiler::aprobar() {
+    aprobada = true;
+    estado = "aprobada";
+}
+
+bool SolicitudAlquiler::estaAprobada() {
+    return aprobada;
 }
