@@ -9,10 +9,11 @@ int main() {
 
     miEmpresa.agregarSucursal("Sucursal Central", "San José");
     miEmpresa.agregarSucursal("Sucursal Alajuela", "Alajuela");     
-    miEmpresa.agregarSucursal("Sucursal Heredia", "Heredia");
-
-    cout << "Sucursales de la empresa:" << std::endl;
     miEmpresa.mostrarSucursales();
+
+    cout << "\n Mostrando plantel de primera sucursal" << endl;
+    Sucursal suc ("Sucursal Central", "San José");
+    suc.mostrarPlantel();
 
     return 0;
 }
