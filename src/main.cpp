@@ -4,7 +4,7 @@
 
 using namespace std;
 int main() {
-    cout << "=== Prueba de integración Vehículo ↔ Espacio ===" << endl;
+    cout << "=== Prueba de integración Vehículo en Espacio ===" << endl;
 
     // Crear un espacio
     Espacio e1("A1");

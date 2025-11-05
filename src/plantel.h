@@ -3,10 +3,11 @@
 
 #include "espacio.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-// Plantel represneta una matriz de espacios 
+// Plantel representa una matriz de espacios 
 class Plantel {
 private:
     int filas;
@@ -18,6 +19,12 @@ public:
     ~Plantel();
 
     void mostrarMatriz() const;
+
+    // funciones para gestionar espacios
+    Espacio* obtenerEspacio(const string& codigo);  // buscar espacio por código
+    void ocuparEspacio(const string& codigo, Vehiculo* vehiculo); // marcar espacio como ocupado con un vehiculo
+    void liberarEspacio(const string& codigo); // liberar espacio
+    void mostrarEstadoGeneral() const; // resumen de ocupación
 };
 
 #endif
