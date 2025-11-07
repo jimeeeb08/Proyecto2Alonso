@@ -1,17 +1,19 @@
 #include "plantel.h"
+#include "espacio.h"
+#include "vehiculo.h"
 using namespace std;
 
-Plantel::Plantel(int filas, int columnas) {
+Plantel::Plantel(int filas, int columnas, Espacio** matriz) {
     this->filas = filas;
     this->columnas = columnas;
 
-    // Crear matriz dinámica
-    matriz = new Espacio*[filas];
+    // Crear matriz dinámica correctamente sobre el atributo de la clase
+    this->matriz = new Espacio*[filas];
     for (int i = 0; i < filas; i++) {
-        matriz[i] = new Espacio[columnas];
+        this->matriz[i] = new Espacio[columnas];
         for (int j = 0; j < columnas; j++) {
-            string codigo = "F" + to_string(i+1) + "C" + to_string(j+1);
-            matriz[i][j] = Espacio(codigo);
+            string codigo = "F" + to_string(i + 1) + "C" + to_string(j + 1);
+            this->matriz[i][j] = Espacio(codigo);
         }
     }
 }
@@ -25,9 +27,16 @@ Plantel::~Plantel() {
 
 void Plantel::mostrarMatriz() const {
     cout << "\n--- Plantel (" << filas << "x" << columnas << ") ---" << endl;
+    if (!matriz) {
+    cout << "Error: matriz no inicializada.\n";
+    return;
+}
     for (int i = 0; i < filas; i++) {
         for (int j = 0; j < columnas; j++) {
-            cout << "[" << matriz[i][j].getCodigo() << "]";
+            if (matriz[i][j].estaOcupado())
+                cout << "[X] ";
+            else
+                cout << "[ ] ";
         }
         cout << endl;
     }
@@ -86,3 +95,20 @@ void Plantel::mostrarEstadoGeneral() const {
     cout << "Espacios ocupados: " << ocupados << endl;
     cout << "Espacios libres: " << libres << endl;
 }
+
+Vehiculo* Plantel::buscarVehiculo(const string& placa) const {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            Espacio* espacio = &matriz[i][j];
+            if (espacio && espacio->estaOcupado()) {
+                Vehiculo* v = espacio->getVehiculo();
+                if (v && v->getPlaca() == placa) {
+                    return v; // Encontrado
+                }
+            }
+        }
+    }
+    return nullptr; // No encontrado
+}
+
+

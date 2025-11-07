@@ -3,12 +3,20 @@
 
 SolicitudAlquiler::SolicitudAlquiler()
     : idSolicitud(0), cliente(nullptr), vehiculo(nullptr),
-      fechaInicio(""), fechaFin(""), estado("pendiente") {}
+      fechaInicio(""), fechaFin(""), estado("pendiente"), aprobada(false) {}
 
 SolicitudAlquiler::SolicitudAlquiler(int id, Cliente* cliente, Vehiculo* vehiculo,
                                      const string& inicio, const string& fin, bool aprobada)
-    : idSolicitud(id), cliente(cliente), vehiculo(vehiculo),
-      fechaInicio(inicio), fechaFin(fin), estado("pendiente"), aprobada(false) {}
+    : idSolicitud(id),
+      cliente(cliente),
+      vehiculo(vehiculo),
+      fechaInicio(inicio),
+      fechaFin(fin),
+      aprobada(aprobada) // ✅ ahora sí usamos el parámetro
+{
+    // ✅ Ajustamos el estado según el valor de 'aprobada'
+    estado = aprobada ? "aprobada" : "pendiente";
+}
 
 SolicitudAlquiler::~SolicitudAlquiler() {}
 

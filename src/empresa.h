@@ -25,6 +25,19 @@ public:
 
     void agregarSucursal(const string& nombre, const string& ubicacion);
     void mostrarSucursales() const;
+
+    // --- NUEVOS MÉTODOS ---
+    // Devuelve la cantidad de sucursales
+    int cantidadSucursales() const;
+
+    // Obtener sucursal por índice (0-based). Retorna nullptr si no existe.
+    Sucursal* obtenerSucursalPorIndice(int indice) const;
+
+    // Buscar sucursal por nombre. Retorna nullptr si no existe.
+    Sucursal* obtenerSucursalPorNombre(const string& nombreBuscado) const;
+
+    // Mostrar información general de la empresa (nombre y cantidad de sucursales)
+    void mostrarInformacion() const;
 };
 
 #endif

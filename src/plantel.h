@@ -2,6 +2,7 @@
 #define PLANTEL_H
 
 #include "espacio.h"
+#include "vehiculo.h"
 #include <iostream>
 #include <string>
 
@@ -15,7 +16,7 @@ private:
     Espacio** matriz; // matriz dinámica de punteros a Espacio
 
 public:
-    Plantel(int filas, int columnas);
+    Plantel(int filas, int columnas, Espacio** matriz);
     ~Plantel();
 
     void mostrarMatriz() const;
@@ -25,6 +26,7 @@ public:
     void ocuparEspacio(const string& codigo, Vehiculo* vehiculo); // marcar espacio como ocupado con un vehiculo
     void liberarEspacio(const string& codigo); // liberar espacio
     void mostrarEstadoGeneral() const; // resumen de ocupación
+    Vehiculo* buscarVehiculo(const string& placa) const;
 };
 
 #endif
